@@ -1,0 +1,805 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+ul{
+    list-style: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+header{
+    width:100%;
+    height:6vh;
+    display: flex;
+    justify-content: space-between;
+    background: transparent;
+    position: fixed;
+    top:0;
+    padding:5px 10px;
+    z-index: 10;
+}
+
+header.scrolled{
+    background: rgba(128, 128, 128,0.7);
+}
+
+header .logo{
+    color:white;
+    font-size: 20px;
+    padding:5px;
+}
+
+header .logo span{
+    color:#F7FF00;
+}
+
+nav ul{
+    display: flex;
+}
+
+nav ul .link{
+    padding:10px;
+    font-size:16px;
+    font-weight: 500;
+}
+
+nav ul .link a{
+    position: relative;
+    transition: .7s ease-in-out;
+    color: white;
+    
+}
+
+nav ul .link a:hover{
+    color:#F7FF00;
+}
+
+nav ul .link a::after{
+    content: '';
+    background-color: #F7FF00;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:1px;
+    transition: .7s ease-in-out;
+}
+
+nav ul .link a:hover::after{
+    width:100%;
+}
+
+nav ul .btn{
+    background-color: #F7FF00;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+nav ul .btn a{
+    display: block;
+    padding:10px;
+    transition: .7s ease-in-out;
+}
+
+nav ul .btn a:hover{
+    color:white;
+}
+
+
+.nav-toggler{
+    width:0;
+    height:0;
+    visibility: hidden;
+    position: absolute;
+    right: 1rem;
+    top: 0rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    z-index: 4;
+}
+
+
+.nav-toggler-span{
+    position: absolute;
+    right:0;
+    top:0.5rem;
+    margin:10px;
+    width:28px;
+    height:3px;
+    background: black;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-toggler-span::before{
+    content: '';
+    position: absolute;
+    top:-8px;
+    width:28px;
+    height:3px;
+    background-color:black;
+    transition: 0.4s ease-in-out;
+}
+
+.nav-toggler-span::after{
+    content: '';
+    position: absolute;
+    top:8px;
+    width:20px;
+    height:3px;
+    background-color:black;
+    transition: 0.4s ease-in-out;
+}
+
+.nav-toggler-span.active{
+    transform: rotate(720deg);
+    background:transparent;
+}
+
+
+.nav-toggler-span.active::before{
+    transform: rotate(45deg) translate(5px, 8px);
+}
+
+.nav-toggler-span.active::after{
+    width:28px;
+    transform: rotate(-45deg) translate(3px, -7px);
+}
+
+#about{
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 800px;
+}
+
+#about .img{
+    width:100%;
+    height:100%;
+}
+
+.about-content{
+    position: absolute;
+    top:0;
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width:100%;
+    height: 100%;
+}
+
+.about-content h1{
+    font-size: 40px;
+}
+
+.about-content h1,.about-content p{
+    line-height: 60px;
+}
+
+.about-content button{
+    background: none;
+    outline: none;
+    border:1px solid white;
+    border-radius: 20px;
+    transition: .3s ease-in-out;
+}
+
+.about-content button:hover{
+    transform: translateY(-20%);
+}
+
+.about-content button a{
+    display: block;
+    padding:10px;
+    color:white;
+    border-radius: 20px;
+    transition: .7s ease-in-out;
+    font-weight: bold;
+}
+
+.about-content button a:hover{
+    background-color: #F7FF00;
+
+}
+
+#players{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F7FF00;
+}
+
+
+.players-content h1{
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.players-content p{
+    padding:20px 0;
+}
+
+.players-content .downloaders a img{
+    border-radius: 10px;
+}
+
+.players-content button{
+    background: none;
+    outline: none;
+    border-radius: 20px;
+    margin:20px 0;
+    padding:10px;
+    color:black;
+    border: 1px solid black;
+    font-weight: bold;
+    transition: .7s ease-in-out;
+}
+
+.players-content button:hover{
+    border:1px solid white;
+    color:white;
+}
+
+#trainers{
+    background-image: url(../img/img3.jpg);
+    background-position: center;
+    background-size: cover;
+    width:100%;
+    height:600px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trainers{
+    color: white;
+}
+
+.trainers h1{
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.trainers p{
+    padding:20px 0;
+}
+
+.trainers .btns{
+    margin:40px 0;
+}
+
+.trainers .btns button:nth-child(1){
+    background:#F7FF00;
+    outline:none;
+    padding:10px;
+    border-radius: 20px;
+    border:1px solid #F7FF00;
+    transition: .7s ease-in-out;
+}
+
+.trainers .btns button:nth-child(1):hover{
+    color:white;
+}
+
+
+.trainers .btns button:nth-child(2){
+    background:none;
+    outline:none;
+    padding:10px;
+    border-radius: 20px;
+    border:1px solid black;
+    transition: .7s ease-in-out;
+}
+
+.trainers .btns button:nth-child(2):hover{
+    color:white;
+    border:1px solid white;
+}
+
+#clubs{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:20px;
+}
+
+#clubs .img img{
+    width:400px;
+    height: 400px;
+}
+
+#clubs .content h1{
+    font-size: 40px;
+    line-height: 60px;
+}
+
+#clubs .content p{
+    padding:20px 0;
+}
+
+#clubs .content button{
+    margin:40px 0;
+    background:#F7FF00;
+    outline:none;
+    padding:10px;
+    border-radius: 20px;
+    border:1px solid #F7FF00;
+    transition: .7s ease-in-out;
+}
+
+#clubs .content button:hover{
+    color:white;
+    
+}
+
+
+#contact{
+    background-color: #F7FF00;
+    padding:20px 0;
+}
+
+#contact .newsletter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact .newsletter h1{
+    font-size: 40px;
+    line-height: 60px;
+}
+
+#contact .newsletter p{
+    text-align: center;
+}
+
+#contact .newsletter form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#contact .newsletter form .creds{
+    display: flex;
+}
+
+#contact .newsletter form .creds .inputs p input{
+    background: none;
+    outline:none;
+    padding:10px;
+    margin: 10px;
+    border:1px solid black;
+    width:300px;
+}
+
+
+#contact .newsletter form .creds textarea{
+    background: none;
+    outline:none;
+    padding:10px;
+    margin: 10px;
+    border:1px solid black;
+    width:300px;
+}
+
+
+#contact .newsletter form button{
+    background: none;
+    outline:none;
+    padding:10px 20px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border:1px solid black;
+    transition: .7s ease-in-out;
+}
+
+#contact .newsletter form button:hover{
+    color:white;
+    border:1px solid white;
+}
+
+#contact .social-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+    padding:30px;
+}
+
+#contact .social-links div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:0 40px;
+}
+
+#contact .social-links img{
+    transition: .3s ease-in-out;
+}
+
+#contact .social-links img:hover{
+    transform: translateY(-20%);
+}
+
+#contact .social-links div span{
+    line-height: 40px;
+}
+
+footer{
+    width:auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+footer ul{
+    display: flex;
+    width:auto;
+    height:50px;
+}
+
+footer ul .link a{
+    display: block;
+    border-right: 1px solid black;
+    padding:10px;
+    font-weight: bold;
+}
+
+
+footer ul .btn a{
+    display: block;
+    padding:10px;
+    font-weight: bold;
+}
+
+footer ul li a{
+    transition: .7s ease-in-out;
+    position: relative;
+}
+
+footer ul li a:hover{
+    color:#F7FF00;
+    border-right: 1px solid #F7FF00;
+}
+
+footer ul li a::after{
+    content:'';
+    position: absolute;
+    background-color: #F7FF00;
+    left:0;
+    bottom:0;
+    width:0;
+    height: 1px;
+    transition: .7s ease-in-out;
+}
+
+footer ul li a:hover::after{
+    width: 100%;
+}
+
+
+.authMain{
+    background-image: url(../img/img1.jpg);
+    background-position: cover;
+    background-size:100%;
+    background-repeat:no-repeat;
+    width:100%;
+    height:800px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth{
+    width:100%;
+    height: 600px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg{
+    width: 60%;
+    height: 600px;
+    padding:60px 20px;
+    background-color: rgba(14, 173, 173, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.msg h1{
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.msg p{
+    font-size: 20px;
+}
+
+.auth h1{
+    font-size: 40px;
+    color:rgb(14, 173, 173);
+}
+
+.auth form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth form p{
+    width:100%;
+}
+
+.auth form input{
+    padding:10px;
+    margin:10px 0;
+    width:400px;
+    outline:none;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+
+
+.auth form button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color:rgb(14, 173, 173);
+    color:white;
+    padding:10px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(14, 173, 173);
+}
+
+@media screen  and (max-width:1024px){
+    .nav-toggler{
+        visibility: visible;
+        height: 20px;
+        width:28px;
+    }
+
+    header{
+        padding: 0;
+    }
+
+    header nav{
+        visibility: hidden;
+        position: absolute;    
+        background: rgba(128, 128, 128,0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header nav.active{
+        visibility: visible;
+        height:400px;
+        width:100%;
+    }
+
+    nav ul{
+        flex-direction: column;
+    }
+
+
+    #players{
+        flex-direction: column;
+    }   
+
+    #players .img img{
+        width:100%;
+        height: auto;
+    }
+
+    #clubs{
+        flex-direction: column;
+        padding: 5px;
+    }
+
+
+    #clubs .img img{
+        width: 100%;
+        height: 400px;
+    }
+
+    #contact .newsletter form .creds{
+        flex-direction: row;
+    }
+
+    #contact .social-links{
+        flex-direction: column;
+    }
+
+    footer{
+        padding:5px;
+    }
+
+    footer ul{
+        flex-direction: column;
+        height:auto;
+    }
+
+    .authMain{
+        background-size: cover;
+        background-position: center;
+        position: static;
+        height: 1200px;
+    }
+
+    .authPage{
+        flex-direction: column;
+    }
+
+    .auth{
+        width:100%;
+        padding: 0;
+    }
+
+    .auth form input{
+        padding:10px;
+        margin:10px 0;
+        width:100%;
+        outline:none;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid white;
+    }
+
+    .msg{
+        width:100%;
+        padding: 0;
+    }
+}
+
+@media screen  and (max-width:600px){
+    .nav-toggler{
+        visibility: visible;
+        height: 20px;
+        width:28px;
+    }
+
+    header{
+        padding: 0;
+    }
+
+    header nav{
+        visibility: hidden;
+        position: absolute;    
+        background: rgba(128, 128, 128,0.7);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header nav.active{
+        visibility: visible;
+        height:400px;
+        width:100%;
+    }
+
+    nav ul{
+        flex-direction: column;
+    }
+
+
+    #players{
+        flex-direction: column;
+    }   
+
+    #players .img img{
+        width:100%;
+        height: auto;
+    }
+
+    #clubs{
+        flex-direction: column;
+        padding: 5px;
+    }
+
+
+    #clubs .img img{
+        width: 100%;
+        height: 400px;
+    }
+
+    #contact .newsletter form .creds{
+        flex-direction: column;
+    }
+
+    #contact .social-links{
+        flex-direction: column;
+    }
+
+    footer{
+        padding:5px;
+    }
+
+    footer ul{
+        flex-direction: column;
+        height:auto;
+    }
+
+    .authMain{
+        background-size: cover;
+        background-position: center;
+        position: static;
+        height: 1200px;
+    }
+
+    .authPage{
+        flex-direction: column;
+    }
+
+    .auth{
+        width:100%;
+        padding: 0;
+    }
+
+    .auth form input{
+        padding:10px;
+        margin:10px 0;
+        width:100%;
+        outline:none;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid white;
+    }
+
+    .msg{
+        width:100%;
+        padding: 0;
+    }
+}
